@@ -6,11 +6,21 @@ import org.springframework.stereotype.Service;
 public class CustomerMapper {
     public Customer toCustomer(CustomerRequest customer) {
         return Customer.builder()
-                .id(customer.getId())
-                .firstName(customer.getFirstName())
-                .lastName(customer.getLastName())
-                .email(customer.getEmail())
-                .address(customer.getAddress())
+                .id(customer.id())
+                .firstName(customer.firstName())
+                .lastName(customer.lastName())
+                .email(customer.email())
+                .address(customer.address())
                 .build();
+    }
+
+    public CustomerResponse fromCustomer(Customer customer) {
+        return new CustomerResponse(
+                customer.getId(),
+                customer.getFirstName(),
+                customer.getLastName(),
+                customer.getEmail(),
+                customer.getAddress()
+        );
     }
 }
